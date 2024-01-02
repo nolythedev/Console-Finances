@@ -17,7 +17,7 @@ The link to the deployed Github page can be found [here](https://nolythedev.gith
 
 ## Installation
 
-* Clone the repository: git clone git@github.com:nolythedev/Console-Finances.git
+* Clone the repository: git clone https://github.com/nolythedev/Console-Finances.git
 * Navigate to the project directory: cd Console-Finances
 * Open the codebase in your preferred code editor.
 
