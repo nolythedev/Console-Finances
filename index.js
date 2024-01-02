@@ -103,14 +103,32 @@ for (var i = 0; i < finances.length; i++) {
   totalProfitLoss += finances[i][1];
 }
 
-console.log("Total: $" +totalProfitLoss);
+console.log("Total: $" + totalProfitLoss);
 
 // The average of the changes in Profit/Losses over the entire period.
 // You will need to track what the total change in Profit/Losses are from month to month and then find the average.
-
 // (Total/(Number of months - 1))
 
+// Initialise variables to keep track of total change and number of months
+var totalChange = 0;
+
+// Loop through the finances array starting from the second element
+for (var i = 1; i < finances.length; i++) {
+  // Calculate the change in profits/losses
+  var change = finances[i][1] - finances[i - 1][1];
+
+  // Add the change to the total
+  totalChange += change;
+}
+
+// Calculate the average change
+var averageChange = totalChange / (finances.length - 1);
+
+// Print the result
+console.log('Average Change:', averageChange.toFixed(2));
+
 // The greatest increase in Profit/Losses (date and amount) over the entire period.
+
 // The greatest decrease in Profit/Losses (date and amount) over the entire period.
 
 // Initialise variables to keep track of the greatest increase and decrease
