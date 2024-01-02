@@ -88,27 +88,54 @@ var finances = [
 ];
 
 // The total number of months included in the dataset.
-let totalMonths = 0;
+var totalMonths = 0;
 
-for (let i = 0; i < finances.length; i++) {
+for (var i = 0; i < finances.length; i++) {
   totalMonths++
 }
 
 console.log("Total months:", totalMonths);
 
 // The net total amount of Profit/Losses over the entire period.
-let totalProfitLoss = 0;
+var totalProfitLoss = 0;
 
-for (let i = 0; i < finances.length; i++) {
+for (var i = 0; i < finances.length; i++) {
   totalProfitLoss += finances[i][1];
 }
 
 console.log("Total: $" +totalProfitLoss);
 
 // The average of the changes in Profit/Losses over the entire period.
-
 // You will need to track what the total change in Profit/Losses are from month to month and then find the average.
-// (Total/(Number of months - 1))
-// The greatest increase in Profit/Losses (date and amount) over the entire period.
 
+// (Total/(Number of months - 1))
+
+// The greatest increase in Profit/Losses (date and amount) over the entire period.
 // The greatest decrease in Profit/Losses (date and amount) over the entire period.
+
+// Initialise variables to keep track of the greatest increase and decrease
+var greatestIncrease = { date: '', amount: 0 };
+var greatestDecrease = { date: '', amount: 0 };
+
+// Loop through the finances array starting from the second element
+for (var i = 1; i < finances.length; i++) {
+  // Calculate the change in profits/losses
+  var change = finances[i][1] - finances[i - 1][1];
+
+  // Check if the current change is greater than the greatest increase
+  if (change > greatestIncrease.amount) {
+    greatestIncrease.date = finances[i][0];
+    greatestIncrease.amount = change;
+  }
+
+  // Check if the current change is less than the greatest decrease
+  if (change < greatestDecrease.amount) {
+    greatestDecrease.date = finances[i][0];
+    greatestDecrease.amount = change;
+  }
+}
+
+// Print the results
+console.log('Greatest Increase in Profits/Losses:', greatestIncrease.date, '($' + greatestIncrease.amount + ')');
+console.log('Greatest Decrease in Profits/Losses:', greatestDecrease.date, '($' + greatestDecrease.amount + ')');
+
